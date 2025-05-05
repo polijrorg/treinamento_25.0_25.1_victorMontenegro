@@ -5,7 +5,7 @@ interface AppProviderProps {
     children: React.ReactNode;
 }
 
-function AppProvider({ children }): React.FC<AppProviderProps> {
+function AppProvider({ children }: AppProviderProps) {
     return <ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>;
 }
 
