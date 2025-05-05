@@ -1,102 +1,193 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+import { defaultTheme } from '../../styles/default.theme';
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+export const CommentBox = styled.div`
+    background-color: ${defaultTheme.colors.slate3};
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+
+    border: 1px solid #333;
+`;
+
+export const RightTitleWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
 `;
 
 export const Container = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
     width: 100%;
-    padding: ${({ theme }) => `${theme.space[5]}px`};
-    flex-direction: column;
-    background: linear-gradient(
-        135deg,
-        ${({ theme }) => theme.colors.sky1} 0%,
-        ${({ theme }) => theme.colors.sky3} 100%
-    );
-    overflow-x: hidden;
-
-    @media (max-width: 768px) {
-        padding: ${({ theme }) => `${theme.space[3]}px`};
-    }
+    height: 100vh;
+    background-color: ${defaultTheme.colors.slate1};
 `;
 
-export const ContentWrapper = styled.div`
+export const LeftColumn = styled.div`
+    width: 20%;
+    padding: ${defaultTheme.space[4]}px;
+    background-color: ${defaultTheme.colors.slate1};
+    border-right: 1px solid ${defaultTheme.colors.slate5};
+    overflow-y: auto;
+`;
+
+export const MenuItem = styled.div`
     display: flex;
-    flex-direction: column;
     align-items: center;
-    max-width: 800px;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    padding: ${({ theme }) => `${theme.space[6]}px`};
-    border-radius: ${({ theme }) => `${theme.radii.md}px`};
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    animation: ${fadeIn} 0.6s ease-out;
+    margin-bottom: ${defaultTheme.space[5]}px;
+    padding: ${defaultTheme.space[2]}px;
+    border-radius: ${defaultTheme.radii.sm}px;
+    cursor: pointer;
 
-    @media (max-width: 768px) {
-        padding: ${({ theme }) => `${theme.space[4]}px`};
+    img {
+        width: 24px;
+        height: 24px;
+        margin-right: ${defaultTheme.space[3]}px;
     }
-`;
 
-export const Title = styled.h1`
-    color: ${({ theme }) => theme.colors.white};
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: ${({ theme }) => `${theme.space[4]}px`};
-    text-align: center;
-    letter-spacing: -0.5px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    animation: ${fadeIn} 0.6s ease-out;
-
-    @media (max-width: 768px) {
-        font-size: 2.2rem;
+    span {
+        font-family: ${defaultTheme.fonts.untitled};
+        font-size: ${defaultTheme.fontSizes[3]};
+        color: ${defaultTheme.colors.white};
     }
-`;
 
-export const Comment = styled.p`
-    color: ${({ theme }) => theme.colors.sky10};
-    font-size: 1.5rem;
-    margin-bottom: ${({ theme }) => `${theme.space[3]}px`};
-    text-align: center;
-    font-weight: 500;
-    animation: ${fadeIn} 0.8s ease-out;
-
-    @media (max-width: 768px) {
-        font-size: 1.2rem;
-    }
-`;
-
-export const Description = styled.p`
-    color: ${({ theme }) => theme.colors.slate11};
-    font-size: 1.2rem;
-    margin-bottom: ${({ theme }) => `${theme.space[5]}px`};
-    text-align: center;
-    line-height: 1.6;
-    max-width: 540px;
-    animation: ${fadeIn} 1s ease-out;
-
-    @media (max-width: 768px) {
-        font-size: 1rem;
-    }
-`;
-
-export const ComponentWrapper = styled.div`
-    margin-top: ${({ theme }) => `${theme.space[4]}px`};
-    animation: ${fadeIn} 1.2s ease-out;
-    transition: transform 0.3s ease;
-
+    /* Hover normal para todos */
     &:hover {
-        transform: scale(1.05);
+        background-color: ${defaultTheme.colors.sky8};
+    }
+
+    /* Primeiro item especial */
+    &:first-child {
+        img {
+            width: 40px;
+            height: 40px;
+        }
+
+        span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Primeiro item NÃO muda o fundo ao passar mouse */
+        &:hover {
+            background-color: transparent;
+        }
+    }
+`;
+
+export const CenterColumn = styled.div`
+    width: 60%;
+    padding: ${defaultTheme.space[4]}px;
+    overflow-y: auto;
+    background-color: ${defaultTheme.colors.slate2};
+`;
+
+export const SearchBar = styled.input`
+    width: 100%;
+    padding: ${defaultTheme.space[3]}px;
+    margin-bottom: ${defaultTheme.space[4]}px;
+    border: 1px solid ${defaultTheme.colors.slate5};
+    border-radius: ${defaultTheme.radii.sm}px;
+    background-color: ${defaultTheme.colors.slate8};
+    color: ${defaultTheme.colors.white};
+`;
+
+export const CommentList = styled.div`
+    max-height: calc(100vh - 240px);
+    overflow-y: auto;
+    margin-bottom: ${defaultTheme.space[4]}px;
+`;
+
+export const CommentItem = styled.div`
+    padding: ${defaultTheme.space[3]}px;
+    border-bottom: 1px solid ${defaultTheme.colors.slate6};
+    font-size: ${defaultTheme.fontSizes[2]};
+    color: ${defaultTheme.colors.onSurface.mediumEmphasis};
+    background-color: ${defaultTheme.colors.slate2};
+    border-radius: ${defaultTheme.radii.sm}px;
+    margin-bottom: ${defaultTheme.space[2]}px;
+`;
+
+export const NewCommentSection = styled.div`
+    margin-top: ${defaultTheme.space[4]}px;
+`;
+
+export const CommentInput = styled.textarea`
+    width: 100%;
+    padding: ${defaultTheme.space[3]}px ${defaultTheme.space[9]}px
+        ${defaultTheme.space[3]}px ${defaultTheme.space[3]}px; /* espaço extra à direita para o botão */
+    border: 1px solid ${defaultTheme.colors.slate5};
+    border-radius: ${defaultTheme.radii.sm}px;
+    resize: none;
+    height: 80px;
+    font-size: ${defaultTheme.fontSizes[2]};
+    background-color: ${defaultTheme.colors.slate8};
+    color: ${defaultTheme.colors.white};
+`;
+
+export const AddButton = styled.button`
+    margin-left: ${defaultTheme.space[3]}px;
+    padding: ${defaultTheme.space[2]}px ${defaultTheme.space[4]}px;
+    border: none;
+    border-radius: ${defaultTheme.radii.md}px;
+    background-color: ${defaultTheme.colors.sky11};
+    color: ${defaultTheme.colors.white};
+    cursor: pointer;
+    font-family: ${defaultTheme.fonts.untitled};
+`;
+
+export const RightColumn = styled.div`
+    width: 20%;
+    padding: ${defaultTheme.space[4]}px;
+    background-color: ${defaultTheme.colors.slate1};
+    border-left: 1px solid ${defaultTheme.colors.slate5};
+    overflow-y: auto;
+`;
+
+export const RightTitle = styled.h2`
+    font-size: ${defaultTheme.fontSizes[3]};
+    font-family: ${defaultTheme.fonts.untitled};
+    color: ${defaultTheme.colors.white};
+    margin-bottom: ${defaultTheme.space[2]}px;
+`;
+
+export const RightSeparator = styled.hr`
+    border: none;
+    height: 1px;
+    background-color: ${defaultTheme.colors.slate6};
+    margin-bottom: ${defaultTheme.space[4]}px;
+`;
+
+export const ImageCard = styled.div`
+    margin-bottom: ${defaultTheme.space[5]}px;
+
+    img {
+        width: 100%;
+        border-radius: ${defaultTheme.radii.sm}px;
+    }
+
+    h4 {
+        margin-top: ${defaultTheme.space[2]}px;
+        font-size: ${defaultTheme.fontSizes[3]};
+        color: ${defaultTheme.colors.white};
+    }
+`;
+
+export const InputWrapper = styled.div`
+    position: relative;
+    width: 100%;
+`;
+
+export const SendButton = styled.button`
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    img {
+        width: 24px;
+        height: 24px;
     }
 `;

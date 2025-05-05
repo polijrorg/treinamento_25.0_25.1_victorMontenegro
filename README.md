@@ -8,7 +8,7 @@ Este template faz parte do programa de capacitação técnica da Poli Junior, pr
 
 ## 🔎 Demonstração
 
-Uma demonstração online deste template está disponível em:  https://Victoradmns.github.io/treinamento_25.0_25.1_victorMontenegro/
+Uma demonstração online deste template está disponível em: https://Victoradmns.github.io/treinamento_25.0_25.1_victorMontenegro/
 
 ## 🛠️ Tecnologias e ferramentas
 

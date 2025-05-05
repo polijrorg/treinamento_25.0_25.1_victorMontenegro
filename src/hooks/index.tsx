@@ -5,8 +5,8 @@ interface AppProviderProps {
     children: React.ReactNode;
 }
 
-const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
+function AppProvider({ children }): React.FC<AppProviderProps> {
     return <ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>;
-};
+}
 
 export default AppProvider;
